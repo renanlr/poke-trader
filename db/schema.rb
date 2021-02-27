@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_011455) do
+ActiveRecord::Schema.define(version: 2021_02_27_014606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pokemons", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "image_url"
+    t.integer "base_experience", null: false
+    t.integer "trade_group", null: false
+    t.bigint "trade_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trade_id"], name: "index_pokemons_on_trade_id"
+  end
 
   create_table "trades", force: :cascade do |t|
     t.integer "base_experience_difference"
@@ -21,4 +32,5 @@ ActiveRecord::Schema.define(version: 2021_02_27_011455) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "pokemons", "trades"
 end
