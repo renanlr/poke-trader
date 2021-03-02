@@ -43,6 +43,8 @@ RSpec.describe Trade, type: :model do
         ]
       )
       expect(trade.save).to be true
+      expect(Trade.find(trade.id).pokemons.from_group_a.count).to be 1
+      expect(Trade.find(trade.id).pokemons.from_group_b.count).to be 1
     end
     it 'in both groups with more than 6 pokemons in group A sould return false' do
       trade = Trade.new(base_experience_difference: 1)
