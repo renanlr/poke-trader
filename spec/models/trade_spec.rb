@@ -8,11 +8,11 @@ RSpec.describe Trade, type: :model do
     end
   end
   context 'with no pokemons set' do
-    it 'on both sides of the trade sould return false' do
+    it 'on both sides of the trade should return false' do
       trade = Trade.new(base_experience_difference: 1)
       expect(trade.save).to be false
     end
-    it 'in only A group of the trade sould return false' do
+    it 'in only A group of the trade should return false' do
       trade = Trade.new(base_experience_difference: 1)
       trade.pokemons.build(
         [
@@ -22,7 +22,7 @@ RSpec.describe Trade, type: :model do
       )
       expect(trade.save).to be false
     end
-    it 'in only B group of the trade sould return false' do
+    it 'in only B group of the trade should return false' do
       trade = Trade.new(base_experience_difference: 1)
       trade.pokemons.build(
         [
@@ -34,7 +34,7 @@ RSpec.describe Trade, type: :model do
     end
   end
   context 'with pokemons set' do
-    it 'in both groups sould create trade with success' do
+    it 'in both groups should create trade with success' do
       trade = Trade.new(base_experience_difference: 1)
       trade.pokemons.build(
         [
@@ -46,7 +46,7 @@ RSpec.describe Trade, type: :model do
       expect(Trade.find(trade.id).pokemons.from_group_a.count).to be 1
       expect(Trade.find(trade.id).pokemons.from_group_b.count).to be 1
     end
-    it 'in both groups with more than 6 pokemons in group A sould return false' do
+    it 'in both groups with more than 6 pokemons in group A should return false' do
       trade = Trade.new(base_experience_difference: 1)
       trade.pokemons.build(
         [
@@ -62,7 +62,7 @@ RSpec.describe Trade, type: :model do
       )
       expect(trade.save).to be false
     end
-    it 'in both groups with more than 6 pokemons in group B sould return false' do
+    it 'in both groups with more than 6 pokemons in group B should return false' do
       trade = Trade.new(base_experience_difference: 1)
       trade.pokemons.build(
         [

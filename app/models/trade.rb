@@ -7,14 +7,26 @@ class Trade < ApplicationRecord
 
   def must_have_at_least_one_pokemon_on_each_side_of_the_trade
     errors.add(:pokemons, 'must have at least one pokemon on each side of the trade') unless
-    pokemons.reduce(0) { |sum, p| sum + (p.trade_group == 1 ? 1 : 0) }.positive? &&
-    pokemons.reduce(0) { |sum, p| sum + (p.trade_group == 2 ? 1 : 0) }.positive?
+    pokemons_from_group_a.size.positive? &&
+    pokemons_from_group_b.size.positive?
   end
 
   def max_6_pokemons_on_each_side
     errors.add(:pokemons, 'must have maximum 6 pokemons on each side of the trade') unless
     pokemons.size.zero? ||
-    pokemons.reduce(0) { |sum, p| sum + (p.trade_group == 1 ? 1 : 0) } < 7 &&
-    pokemons.reduce(0) { |sum, p| sum + (p.trade_group == 2 ? 1 : 0) } < 7
+    pokemons_from_group_a.size < 7 &&
+    pokemons_from_group_b.size < 7
+  end
+
+  def pokemons_from_group_a
+    pokemons.select { |p| p.trade_group == 1 }
+  end
+
+  def pokemons_from_group_b
+    pokemons.select { |p| p.trade_group == 2 }
+  end
+
+  def fair?
+    base_experience_difference <= 15
   end
 end

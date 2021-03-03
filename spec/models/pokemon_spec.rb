@@ -19,7 +19,7 @@ RSpec.describe Pokemon, type: :model do
       @trade.save
     end
     it 'should return true' do
-      pokemon = Pokemon.new(name: 'Torchic', base_experience: 10, trade_group: 1)
+      pokemon = Pokemon.new(name: 'torchic', base_experience: 10, trade_group: 1)
       pokemon.trade = @trade
       expect(pokemon.save).to be true
     end
@@ -60,7 +60,7 @@ RSpec.describe Pokemon, type: :model do
         [
           { name: 'pikachu', base_experience: 10, trade_group: 2 },
           { name: 'raichu', base_experience: 10, trade_group: 1 },
-          { name: 'raichu', base_experience: 10, trade_group: 1 },
+          { name: 'raichu', base_experience: 10, trade_group: 1 }
         ]
       )
       trade.save
