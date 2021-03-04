@@ -17,11 +17,18 @@
   </div>
 
   <fieldset>
-    <legend>Pokemons:</legend>
-    <%= form.fields_for :pokemons do |pokemons_form| %>
-        <%= render "pokemon_fields", f: pokemons_form %>
+    <legend>Pokemons A:</legend>
+    <%= form.fields_for :pokemons do |f| %>
+      <%= render partial: 'pokemons/pokemon_a_fields', locals: {f: f} %>
     <% end %>
-    <%= link_to_add_fields "Add", form, :pokemons %>
+    <%= link_to_add_fields "Add", form, :pokemons, 'pokemons/pokemon_a_fields'%>
+  </fieldset>
+  <fieldset>
+    <legend>Pokemons B:</legend>
+    <%= form.fields_for :pokemons do |f| %>
+      <%= render partial: 'pokemons/pokemon_b_fields', locals: {f: f} %>
+    <% end %>
+    <%= link_to_add_fields "Add", form, :pokemons, 'pokemons/pokemon_b_fields'%>
   </fieldset>
 
   <div class="actions">

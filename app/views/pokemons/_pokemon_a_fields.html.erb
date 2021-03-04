@@ -4,10 +4,7 @@
         <%= f.label :name %>
         <%= f.text_field :name %>
     </div>
-    <div>
-        <%= f.label :trade_group %>
-        <%= f.text_field :trade_group %>
-    </div>
+    <%= f.hidden_field :trade_group, value: 1 %>    
     <div>
         <%= link_to "Remove", '#', class: "remove_fields" %>
     </div>
