@@ -10,15 +10,15 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
+  <div class="row text-center">
     <fieldset class="col-md-5 col-sm-12">
       <legend>Group A:</legend>
       <%= form.fields_for :pokemons do |f| %>
         <%= render partial: 'pokemons/pokemon_a_fields', locals: {f: f} %>
       <% end %>
     </fieldset>
-    <div class="col-md-2 col-sm-12">
-      <>
+    <div class="col-md-2 col-sm-12 d-flex justify-content-center align-items-center">
+      <%= icon("arrow-left-right", width: '40', height: '40') %>
     </div>
     <fieldset class="col-md-5 col-sm-12">
       <legend>Group B:</legend>
@@ -28,7 +28,8 @@
     </fieldset>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Trade', class: 'btn btn-primary' %>
+  <div class="actions d-flex justify-content-center align-items-center">
+    <%= link_to 'Back', trades_path, class: 'btn btn-secondary mx-2' %>
+    <%= form.submit 'Create Trade', class: 'btn btn-primary mx-2' %>
   </div>
 <% end %>

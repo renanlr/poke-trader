@@ -8,18 +8,25 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <nav class="navbar sticky-top navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <%= image_tag('pokeball.png', size: "20x20") %>
+          Poke Trader
+        </a>
+      </div>
+    </nav>
+
   </head>
 
   <body class="bg-secondary">
-    <div class="row">
+    
+
+    <div class="row mt-4">
       <div class="col-8 offset-2">
-        <div class="card text-center">
-          <div class="card-body">
-            <h1>Poke Trader</h1>
-          </div>
-        </div>
         <div class="card">
-          <div class="card-body">
+          <div class="card-body mx-5">
             <%= yield %>
           </div>
         </div>

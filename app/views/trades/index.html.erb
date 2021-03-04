@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="d-flex justify-content-start align-items-center mb-3">
+<div class="row d-flex justify-content-between align-items-center mb-3">
   <h1>Trades</h1>
   <span class="mx-2">
     <%= link_to 'New Trade', new_trade_path, class: 'btn btn-primary btn-sm' %>
@@ -35,7 +35,7 @@
         <div class="col-5">
           <div class="row justify-content-center mb-3">
             <% trade.pokemons_from_group_b.each do |pokemon| %>
-              <div class="col-md-6 col-lg-4 col-xxl-3">
+              <div class="col-md-6 col-lg-4">
               <%= image_tag(pokemon.image_url || 'pokeball.png', size: "80x80", class: "img-thumbnail", alt: pokemon.name) %>
               <div class="caption center-block"><%= pokemon.name %></div>
               </div>
