@@ -1,8 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Base experience difference:</strong>
-  <%= @trade.base_experience_difference %>
-</p>
-
-<%= link_to 'Back', trades_path %>
+<div class="row mb-3">
+  <p id="notice"><%= notice %></p>
+  <%= link_to 'Back', trades_path, class: 'btn btn-primary mx-2' %>
+</div>
+<div class="row">
+<div class="col-12 text-center">
+  <div class="row">
+    <div class="col-5">
+      <div class="row justify-content-center mb-3">
+        <% @trade.pokemons_from_group_a.each do |pokemon| %>
+          <div class="col-12">
+          <%= image_tag(pokemon.image_url || 'pokeball.png', size: "80x80", class: "img-thumbnail", alt: pokemon.name) %>
+          <div class="caption center-block"><%= pokemon.name %><span class="badge bg-light mx-2"><%= pokemon.base_experience %></span></div>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <h6>Total group experience <span class="badge bg-info"><%= @trade.group_a_experience %></span></h6>
+      </div>
+    </div>
+    <div class="col-2 d-flex align-items-center justify-content-center flex-column">
+      <% if @trade.fair? %>
+        <%= icon("hand-thumbs-up-fill", class: "text-success mb-2", width: '40', height: '40') %>
+        Fair
+      <% else %>
+        <%= icon("hand-thumbs-down-fill", class: "text-danger mb-2", width: '40', height: '40') %>
+        Unfair
+      <% end %>
+    </div>
+    <div class="col-5">
+      <div class="row justify-content-center mb-3">
+        <% @trade.pokemons_from_group_b.each do |pokemon| %>
+          <div class="col-12">
+          <%= image_tag(pokemon.image_url || 'pokeball.png', size: "80x80", class: "img-thumbnail", alt: pokemon.name) %>
+          <div class="caption center-block"><%= pokemon.name %><span class="badge bg-light mx-2"><%= pokemon.base_experience %></span></div>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <h6>Total group experience <span class="badge bg-info"><%= @trade.group_b_experience %></span></h6>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
