@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
   # This method creates a link with `data-id` `data-fields` attributes. These attributes are used to create new instances of the nested fields through Javascript.
   def link_to_add_fields(name, form, association, partial)
     # Takes an object (@person) and creates a new instance of its associated model (:addresses)

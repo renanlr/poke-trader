@@ -1,15 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Trades</h1>
-
-<ul class="list-group">
+<div class="d-flex justify-content-start align-items-center mb-3">
+  <h1>Trades</h1>
+  <span class="mx-2">
+    <%= link_to 'New Trade', new_trade_path, class: 'btn btn-primary btn-sm' %>
+  </span>
+</div>
+<div class="row text-center mb-3">
+<ul class="list-group col-12">
   <% @trades.each do |trade| %>
     <li class="list-group-item">
       <div class="row">
         <div class="col-5">
           <div class="row justify-content-center mb-3">
             <% trade.pokemons_from_group_a.each do |pokemon| %>
-              <div class="col-4">
+              <div class="col-md-6 col-lg-4">
               <%= image_tag(pokemon.image_url || 'pokeball.png', size: "80x80", class: "img-thumbnail", alt: pokemon.name) %>
               <div class="caption center-block"><%= pokemon.name %></div>
               </div>
@@ -31,7 +35,7 @@
         <div class="col-5">
           <div class="row justify-content-center mb-3">
             <% trade.pokemons_from_group_b.each do |pokemon| %>
-              <div class="col-4">
+              <div class="col-md-6 col-lg-4 col-xxl-3">
               <%= image_tag(pokemon.image_url || 'pokeball.png', size: "80x80", class: "img-thumbnail", alt: pokemon.name) %>
               <div class="caption center-block"><%= pokemon.name %></div>
               </div>
@@ -45,7 +49,9 @@
     </li>
   <% end %>
 </ul>
+</div>
+<div class="row d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
 
 <br>
-
-<%= link_to 'New Trade', new_trade_path %>

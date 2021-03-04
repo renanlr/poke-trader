@@ -3,7 +3,8 @@ class TradesController < ApplicationController
 
   # GET /trades or /trades.json
   def index
-    @trades = Trade.includes(:pokemons)
+    # @trades = Trade.includes(:pokemons)
+    @pagy, @trades = pagy(Trade.includes(:pokemons).order(created_at: :desc))
   end
 
   # GET /trades/1 or /trades/1.json
