@@ -3,7 +3,7 @@ class TradesController < ApplicationController
 
   # GET /trades or /trades.json
   def index
-    @trades = Trade.all
+    @trades = Trade.includes(:pokemons)
   end
 
   # GET /trades/1 or /trades/1.json
@@ -13,6 +13,7 @@ class TradesController < ApplicationController
   # GET /trades/new
   def new
     @trade = Trade.new
+    6.times { @trade.pokemons.build }
   end
 
   # POST /trades or /trades.json

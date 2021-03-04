@@ -10,7 +10,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-secondary">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="card text-center">
+          <div class="card-body">
+            <h1>Poke Trader</h1>
+          </div>
+        </div>
+        <div class="card text-center">
+          <div class="card-body">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

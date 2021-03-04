@@ -10,28 +10,25 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :base_experience_difference %>
-    <%= form.number_field :base_experience_difference %>
+  <div class="row">
+    <fieldset class="col-md-5 col-sm-12">
+      <legend>Group A:</legend>
+      <%= form.fields_for :pokemons do |f| %>
+        <%= render partial: 'pokemons/pokemon_a_fields', locals: {f: f} %>
+      <% end %>
+    </fieldset>
+    <div class="col-md-2 col-sm-12">
+      <>
+    </div>
+    <fieldset class="col-md-5 col-sm-12">
+      <legend>Group B:</legend>
+      <%= form.fields_for :pokemons do |f| %>
+        <%= render partial: 'pokemons/pokemon_b_fields', locals: {f: f} %>
+      <% end %>
+    </fieldset>
   </div>
 
-  <fieldset>
-    <legend>Pokemons A:</legend>
-    <%= form.fields_for :pokemons do |f| %>
-      <%= render partial: 'pokemons/pokemon_a_fields', locals: {f: f} %>
-    <% end %>
-    <%= link_to_add_fields "Add", form, :pokemons, 'pokemons/pokemon_a_fields'%>
-  </fieldset>
-  <fieldset>
-    <legend>Pokemons B:</legend>
-    <%= form.fields_for :pokemons do |f| %>
-      <%= render partial: 'pokemons/pokemon_b_fields', locals: {f: f} %>
-    <% end %>
-    <%= link_to_add_fields "Add", form, :pokemons, 'pokemons/pokemon_b_fields'%>
-  </fieldset>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Trade', class: 'btn btn-primary' %>
   </div>
 <% end %>

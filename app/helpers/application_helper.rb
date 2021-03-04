@@ -34,4 +34,21 @@ module ApplicationHelper
     # The `id:` value needs to match the value used in `child_index: id`.
     link_to(name, '#', class: 'add_fields', data: { id: id, fields: fields.gsub("\n", "") })
   end
+
+  def icon(icon, options = {})
+    file = File.read("node_modules/bootstrap-icons/icons/#{icon}.svg")
+    doc = Nokogiri::HTML::DocumentFragment.parse file
+    svg = doc.at_css 'svg'
+    if options[:class].present?
+      svg['class'] += " " + options[:class]
+    end
+    if options[:width].present?
+      svg['width'] = " " + options[:width]
+    end
+    if options[:height].present?
+      svg['height'] = " " + options[:height]
+    end
+      doc.to_html.html_safe
+  end
+
 end

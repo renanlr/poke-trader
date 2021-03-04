@@ -1,6 +1,6 @@
 class PokemonService
   def initialize(trade)
-    @trade = trade
+    @trade = clean_trade(trade)
   end
 
   def call
@@ -19,8 +19,17 @@ class PokemonService
   end
 
   def base_experience_difference(trade)
-    (trade.pokemons_from_group_a.reduce(0) { |sum, p| sum + p.base_experience } -
-    trade.pokemons_from_group_b.reduce(0) { |sum, p| sum + p.base_experience }).abs
+    (trade.group_a_experience - trade.group_b_experience).abs
+  end
+
+  def clean_trade(trade)
+    trade.pokemons = trade.pokemons.filter { |p| !p.name.blank? }.map { |p| downcase_pokemon_name(p) }
+    trade
+  end
+
+  def downcase_pokemon_name(pokemon)
+    pokemon.name = pokemon.name.downcase
+    pokemon
   end
 
   def handle_error(error)
