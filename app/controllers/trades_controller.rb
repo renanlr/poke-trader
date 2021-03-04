@@ -13,16 +13,12 @@ class TradesController < ApplicationController
   # GET /trades/new
   def new
     @trade = Trade.new
-    2.times { @trade.pokemons.build }
-  end
-
-  # GET /trades/1/edit
-  def edit
   end
 
   # POST /trades or /trades.json
   def create
     @trade = Trade.new(trade_params)
+    @trade = PokemonService.new(@trade).call.payload
 
     respond_to do |format|
       if @trade.save
