@@ -35,6 +35,6 @@ class Trade < ApplicationRecord
   end
 
   def fair?
-    base_experience_difference <= 15
+    base_experience_difference <= 30
   end
 end
