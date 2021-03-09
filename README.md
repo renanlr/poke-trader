@@ -1,5 +1,6 @@
 # poke-trader
 ## Poke Trader App
+* Heroku: https://shrouded-chamber-01728.herokuapp.com/trades
 
 ### Pre-requisites:
 * have docker installed
