@@ -1,25 +1,22 @@
 # poke-trader
-Poke Trader App
+## Poke Trader App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Pre-requisites:
+* have docker installed
+* have docker-compose installed
 
-Things you may want to cover:
+### Set up
+* Clone Repository
+* Build docker images
+```
+docker-compose build
+```
+* Run application
+```
+docker-compose up
+```
+### Run tests
+```
+docker-compose run web rspec
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
