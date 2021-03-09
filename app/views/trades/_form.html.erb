@@ -1,0 +1,35 @@
+<%= form_with(model: trade) do |form| %>
+  <% if trade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trade.errors.count, "error") %> prohibited this trade from being saved:</h2>
+
+      <ul>
+        <% trade.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row text-center">
+    <fieldset class="col-md-5 col-sm-12">
+      <legend>Group A:</legend>
+      <%= form.fields_for :pokemons do |f| %>
+        <%= render partial: 'pokemons/pokemon_a_fields', locals: {f: f} %>
+      <% end %>
+    </fieldset>
+    <div class="col-md-2 col-sm-12 d-flex justify-content-center align-items-center">
+      <%= icon("arrow-left-right", width: '40', height: '40') %>
+    </div>
+    <fieldset class="col-md-5 col-sm-12">
+      <legend>Group B:</legend>
+      <%= form.fields_for :pokemons do |f| %>
+        <%= render partial: 'pokemons/pokemon_b_fields', locals: {f: f} %>
+      <% end %>
+    </fieldset>
+  </div>
+
+  <div class="actions d-flex justify-content-center align-items-center">
+    <%= link_to 'Back', trades_path, class: 'btn btn-secondary mx-2' %>
+    <%= form.submit 'Create Trade', class: 'btn btn-primary mx-2' %>
+  </div>
+<% end %>

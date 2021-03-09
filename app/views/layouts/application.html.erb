@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PokeTrader</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <nav class="navbar sticky-top navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <%= image_tag('pokeball.png', size: "20x20") %>
+          Poke Trader
+        </a>
+      </div>
+    </nav>
+
+  </head>
+
+  <body class="bg-secondary">
+    
+
+    <div class="row mt-4">
+      <div class="col-8 offset-2">
+        <div class="card">
+          <div class="card-body mx-5">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
