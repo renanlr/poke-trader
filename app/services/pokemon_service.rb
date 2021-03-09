@@ -18,7 +18,7 @@ class PokemonService
 
   def fill_pokemon_attributes(pokemon)
     begin
-      pokemon_from_api = PokeApi.get(pokemon: pokemon.name)
+      pokemon_from_api = get_poke_api(pokemon.name)
       pokemon.base_experience = pokemon_from_api.base_experience
       pokemon.image_url = pokemon_from_api.sprites.front_default
     rescue
@@ -41,6 +41,12 @@ class PokemonService
   def downcase_pokemon_name(pokemon)
     pokemon.name = pokemon.name.downcase
     pokemon
+  end
+
+  def get_poke_api(pokemon_name)
+    Rails.cache.fetch("pokemon/#{pokemon_name}", expires: 1.days) do
+      PokeApi.get(pokemon: pokemon_name)
+    end
   end
 
   def handle_error(error)
